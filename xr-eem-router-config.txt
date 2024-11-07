@@ -1,0 +1,36 @@
+IOX Router EEM Configuration
+###########################################
+
+=============
+CONFIG
+=============
+configure
+!
+username event_manager_user
+ group root-lr
+ group cisco-support
+ secret eem
+!
+aaa authorization commands eem-method none
+aaa authorization eventmanager default local
+line template eem-template
+ authorization commands eem-method
+!
+vty-pool eem 100 105 line-template eem-template
+!
+event manager directory user policy harddisk:/eem/
+event manager policy cda.tcl username event_manager_user persist-time 3600
+!
+root
+!
+show
+!
+commit label eem
+
+=============
+VERIFY
+=============
+show run event manager
+show run aaa
+dir harddisk:/eem
+show event manager policy registered
