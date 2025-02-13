@@ -19,7 +19,7 @@ line template eem-template
 vty-pool eem 100 105 line-template eem-template
 !
 event manager directory user policy harddisk:/eem/
-event manager policy xr-eem-router-config.tcl username event_manager_user persist-time 3600
+event manager policy xr-eem-lc-reload.tcl username event_manager_user persist-time 3600
 !
 root
 !
